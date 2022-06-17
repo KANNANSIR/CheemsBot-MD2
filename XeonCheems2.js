@@ -2133,15 +2133,15 @@ message = await prepareWAMessageMedia({ image : { url: anu.thumbnail } }, { uplo
                 }), { userJid: m.chat, quoted: m })
                   XeonBotInc.relayMessage(m.chat, template.message, { messageId: template.key.id })
             }
+            break
 	    case 'ytmp3': case 'getmusic': case 'ytaudio': {
               await axios.get(`https://api.zeks.xyz/api/ytplaymp3/2?apikey=Nyarlathotep&q=${q}`)
 		     .then(res => {
     		 XeonBotInc.sendMessage(from, '*ᴡᴀɪᴛ ʙʀᴏ🎈*', text, { contextInfo: { externalAdReply: { title: res.data.result.title, body: 'Duration ' + res.data.result.duration + ', Size ' + res.data.result.size, thumbnailUrl: res.data.result.thumb, sourceUrl: res.data.result.link }}})
 			 XeonBotInc.sendMessage(from, { url: res.data.result.link }, 'audioMessage', { mimetype: 'audio/mp4', quoted: anu, contextInfo: { externalAdReply: { title: res.data.result.title, mediaType: 2, thumbnailUrl: res.data.result.thumb, mediaUrl: res.data.result.source }}})
 })
-            break
-            
-            case 'ytmp4': case 'getvideo': case 'ytvideo': {
+            break            
+             case 'ytmp4': case 'ytvideo': {
                 let { ytv } = require('./lib/y2mate')
                 if (!text) return reply(`Example : ${prefix + command} https://youtube.com/watch?v=PtFMh6Tccag%27 360p`)
                 let quality = args[1] ? args[1] : '360p'
